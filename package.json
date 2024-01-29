@@ -1,0 +1,17 @@
+{
+  "name": "nexus3",
+  "version": "1.0.0",
+  "description": "It is used to extract the data from multiple social profiles",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "keywords": [
+    "nexus3"
+  ],
+  "author": "AshikRai",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2"
+  }
+}
