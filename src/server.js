@@ -1,5 +1,6 @@
 // Express related imports
 const express= require("express");
+const cors= require("cors")
 
 // Env imports
 require('dotenv').config()
@@ -11,13 +12,14 @@ const {LinkedInController} = require("./controllers/LinkedInController.js");
 
 // For handling the api calls
 const app= express();
-
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("Sairam")
 });
 app.get("/my-linkedin", LinkedInController.getUserData);
 
-app.listen(process.env.PORT, () => {
-    console.log(`Port is ${process.env.PORT}`);
+const serverPort= process.env.PORT || 9000
+app.listen(serverPort, () => {
+    console.log(`Port is ${serverPort}`);
 });
