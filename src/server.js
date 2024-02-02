@@ -1,23 +1,23 @@
 // Express related imports
 const express= require("express");
 const cors= require("cors")
+const bodyParser = require('body-parser');
 
 // Env imports
 require('dotenv').config()
 
-// Importing Controllers
-const {LinkedInController} = require("./controllers/LinkedInController.js");
-// import { LinkedInController } from "./controllers/linkedInController";
+// Importing routes
+const mediumRoutes= require("./routes/v1/MediumRoutes")
 
 
 // For handling the api calls
 const app= express();
 app.use(cors());
+app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-    res.send("Sairam")
-});
-app.get("/my-linkedin", LinkedInController.getUserData);
+
+// medium routes
+app.use("/api/v1/my-medium/", mediumRoutes);
 
 const serverPort= process.env.PORT || 9000
 app.listen(serverPort, () => {
