@@ -5,7 +5,7 @@
 
 
 # Build files
-dist/
+# dist/
 build/
 *.log
 
