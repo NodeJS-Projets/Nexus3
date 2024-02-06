@@ -17,8 +17,8 @@ exports.MediumController = {
             try{
                 logger.emit("logInfo", Tag, "getting Medium user data")
                 const data= await getUserData(MediumApis.userData, token)
-                logger.emit("logInfo", Tag, `user MediumData: ${Object.keys(data).length}`)
-                res.json(data)
+                logger.emit("logInfo", Tag, `user MediumData: ${JSON.stringify(data.data)}`)
+                res.json(data.data)
             } catch (error){
                 logger.emit("logError", Tag, `Error fetching the user Medium data: ${error.message}`)
                 res.status(500).json({ error: error.message });
