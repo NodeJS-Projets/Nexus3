@@ -2,6 +2,8 @@ const Logger= require("../../utils/logger")
 const axios= require("axios")
 const logger= new Logger()
 
+
+const mediumUserToken = process.env.medium_user_token || null
 const MediumApis= {
     userData: "https://api.medium.com/v1/me",
     userPublications: "//api.medium.com/v1/users/?/publications",
@@ -11,12 +13,11 @@ const MediumApis= {
 const Tag= "MediumController"
 exports.MediumController = {
     getUserData: async (req, res) => {
-        let token= req.body.token;
-        if (token){
+        if (mediumUserToken){
             logger.emit("logInfo", Tag, "Medium user Access Key found in the request")
             try{
                 logger.emit("logInfo", Tag, "getting Medium user data")
-                const data= await getUserData(MediumApis.userData, token)
+                const data= await getUserData(MediumApis.userData, mediumUserToken)
                 logger.emit("logInfo", Tag, `user MediumData: ${JSON.stringify(data.data)}`)
                 res.json(data.data)
             } catch (error){
@@ -32,14 +33,12 @@ exports.MediumController = {
     },
 
     getUserPublication: async (req, res) => {
-        let token= req.body.token;
         let userId= req.body.userId;
-
-        if (token && userId){
+        if (mediumUserToken && userId){
             logger.emit("logInfo", Tag, "Medium user Access Key found in the request")
             try{
                 logger.emit("logInfo", Tag, "getting Medium user publications")
-                const data= await getUserPublication(MediumApis.userPublications, token, userId)
+                const data= await getUserPublication(MediumApis.userPublications, mediumUserToken, userId)
                 logger.emit("logInfo", Tag, `user Publisher Data: ${Object.keys(data).length}`)
                 res.json(data)
             } catch (error){
@@ -81,7 +80,6 @@ async function getUserData(requestUrl, token){
     }
 
 }
-
 
 // Here we are getting the users Publications
 async function getUserPublication(requestUrl, token, userId){
