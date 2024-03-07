@@ -26,8 +26,8 @@ exports.MediumController = {
             }
         }
         else{
-            logger.emit("logError", Tag, "Invalid request: please provide Medium user access key")
-            res.status(500).json({ error: "Invalid request: please provide Medium user access key"});
+            logger.emit("logError", Tag, "Invalid request: please add Medium user access key in env File, refer ReadMe file.")
+            res.status(500).json({ error: "Invalid request: please add Medium user access key in env File, refer ReadMe file."});
 
         }
     },
