@@ -8,6 +8,7 @@ require('dotenv').config()
 
 // Importing routes
 const mediumRoutes= require("./routes/v1/MediumRoutes")
+const GitHubRoutes= require("./routes/v1/GitHubRoutes")
 
 
 // For handling the api calls
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 
 // medium routes
 app.use("/api/v1/my-medium/", mediumRoutes);
+app.use("/api/v1/my-github/", GitHubRoutes);
 
 const serverPort= process.env.PORT || 9000
 app.listen(serverPort, () => {
