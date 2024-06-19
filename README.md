@@ -1,4 +1,4 @@
-# Nexus-3
+# Nexus-3: The Social Scoop
 [![LinkedIn][linkedin-shield]][linkedin-url] [![Medium][medium]][medium-url] [![GitHub][gitHub]][gitHub-url] 
 
 <!-- PROJECT LOGO -->
